@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LoginSignUpxlm</string>
+    <string name="registerpage">Register Page</string>
+    <string name="required_info">*Required Info</string>
+    <string name="username">Username*</string>
+    <string name="email_address">Email Address*</string>
+    <string name="phone_number">Phone Number*</string>
+    <string name="enter_password">Enter Password*</string>
+    <string name="confirm_password">Confirm Password*</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
