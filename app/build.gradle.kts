@@ -33,7 +33,6 @@ android {
 
 dependencies {
     implementation("com.github.dhaval2404:imagepicker:2.1")
-    implementation("com.github.dhaval2404:imagepicker:latest_version")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
