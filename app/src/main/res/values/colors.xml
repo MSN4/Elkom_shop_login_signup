@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lightPink">#FFF7DEF3</color>
+    <color name="dpurble">#6A488C</color>
+    <color name="lpurble">#8C5EB9</color>
 </resources>
