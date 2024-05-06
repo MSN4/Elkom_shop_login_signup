@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "507633676582",
+    "project_id": "loginsignupxlm",
+    "storage_bucket": "loginsignupxlm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507633676582:android:ce44aed84dc908e92151e7",
+        "android_client_info": {
+          "package_name": "com.javaapp.loginsignupxlm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD-tdwldL5I30pmcN5BscrkQPCOETAyoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
