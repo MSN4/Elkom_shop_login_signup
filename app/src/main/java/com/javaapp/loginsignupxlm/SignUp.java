@@ -3,6 +3,7 @@ package com.javaapp.loginsignupxlm;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -13,19 +14,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class SignUp extends AppCompatActivity {
+    private FirebaseAuth auth;
     private EditText usernameEditText;
     private EditText emailEditText;
-    private EditText PhoneEditText;
-    private EditText password;
+    private EditText phoneEditText;
+    private EditText passwordEditText;
     private EditText confirmPassword;
     ImageView imageView;
     FloatingActionButton button;
@@ -40,14 +47,15 @@ public class SignUp extends AppCompatActivity {
             return insets;
         });
 
-        usernameEditText = findViewById(R.id.usernameEditText);
-        emailEditText = findViewById(R.id.editTextEmail);
-        PhoneEditText = findViewById(R.id.editTextPhone);
-        password = findViewById(R.id.editTextPassword);
-        confirmPassword = findViewById(R.id.editTextConfirmPassword);
-        imageView = findViewById(R.id.imageViewPfp);
-        button = findViewById(R.id.floatingActionButton);
-        Button registerationButton = findViewById(R.id.createAccountButton);
+        auth=FirebaseAuth.getInstance();
+        usernameEditText = findViewById(R.id.username_EditText);
+        emailEditText = findViewById(R.id.edit_TextEmail);
+        phoneEditText = findViewById(R.id.edit_TextPhone);
+        passwordEditText = findViewById(R.id.edit_TextPassword);
+        confirmPassword = findViewById(R.id.ConfirmPassword_editText);
+        imageView = findViewById(R.id.pfp_imageView);
+        button = findViewById(R.id.floatingAction_btn);
+        Button registerationButton = findViewById(R.id.createAccount_btn);
 
         registerationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,13 +65,33 @@ public class SignUp extends AppCompatActivity {
 
                 if (usernameEditText.getError() == null &&
                         emailEditText.getError() == null &&
-                        PhoneEditText.getError() == null &&
-                        password.getError() == null &&
+                        phoneEditText.getError() == null &&
+                        passwordEditText.getError() == null &&
                         confirmPassword.getError() == null) {
+                    String userName = usernameEditText.getText().toString().trim();
+                    String email= emailEditText.getText().toString().trim();
+                    String password= passwordEditText.getText().toString().trim();
+                    String phoneNumber= phoneEditText.getText().toString().trim();
+                    auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(SignUp.this, "SignUp Successful!",
+                                        Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(SignUp.this,
+                                        MainActivity.class));
+                            }
+                            else Toast.makeText(SignUp.this, "Signup Failed!"+
+                                    task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                     //startActivity(new Intent(MainActivity.this, ));
                 }
             }
         });
+
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +115,8 @@ public class SignUp extends AppCompatActivity {
     private void checkCredentials() {
         String userName = usernameEditText.getText().toString();
         String email = emailEditText.getText().toString();
-        String phone = PhoneEditText.getText().toString();
-        String passwordS = password.getText().toString();
+        String phone = phoneEditText.getText().toString();
+        String passwordS = passwordEditText.getText().toString();
         String confirmPasswordS = confirmPassword.getText().toString();
 
         String emailPattern = "^[a-zA-Z0-9_]+@gmail\\.com$";
@@ -110,11 +138,11 @@ public class SignUp extends AppCompatActivity {
         }
 
         if (phone.length() != 10 || (!phone.startsWith(validPrefix1) && !phone.startsWith(validPrefix2) && !phone.startsWith(validPrefix3))) {
-            showError(PhoneEditText, "Phone number must be 10 numbers and start with a valid prefix!");
+            showError(phoneEditText, "Phone number must be 10 numbers and start with a valid prefix!");
         }
 
         if (passwordS.isEmpty() || passwordS.length() < 7) {
-            showError(password, "Password must be more than 7 characters");
+            showError(passwordEditText, "Password must be more than 7 characters");
         }
 
         if (confirmPasswordS.isEmpty() || !confirmPasswordS.contentEquals(passwordS)) {
@@ -125,8 +153,8 @@ public class SignUp extends AppCompatActivity {
     private void clearErrors() {
         usernameEditText.setError(null);
         emailEditText.setError(null);
-        PhoneEditText.setError(null);
-        password.setError(null);
+        phoneEditText.setError(null);
+        passwordEditText.setError(null);
         confirmPassword.setError(null);
     }
 

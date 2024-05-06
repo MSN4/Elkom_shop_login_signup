@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageViewPfp"
+            android:id="@+id/pfp_imageView"
             android:layout_width="199dp"
             android:layout_height="200dp"
             android:layout_marginStart="92dp"            android:background="#EAB9F3"
@@ -25,11 +25,11 @@
             app:strokeWidth="5dp"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/floatingAction_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/imageViewPfp"
-            android:layout_alignBottom="@+id/imageViewPfp"
+            android:layout_alignEnd="@+id/pfp_imageView"
+            android:layout_alignBottom="@+id/pfp_imageView"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:background="#EAB9F3"
@@ -75,7 +75,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/usernameEditText"
+                android:id="@+id/username_EditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
@@ -88,7 +88,7 @@
                 android:textColorHint="#AAA4A4" />
 
             <EditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/edit_TextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
@@ -101,7 +101,7 @@
                 android:textColorHint="#AAA4A4" />
 
             <EditText
-                android:id="@+id/editTextPhone"
+                android:id="@+id/edit_TextPhone"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
@@ -114,7 +114,7 @@
                 android:textColorHint="#AAA4A4" />
 
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/edit_TextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
@@ -128,7 +128,7 @@
                 android:textColorHint="#AAA4A4" />
 
             <EditText
-                android:id="@+id/editTextConfirmPassword"
+                android:id="@+id/ConfirmPassword_editText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
@@ -142,7 +142,7 @@
                 android:textColorHint="#AAA4A4" />
 
             <Button
-                android:id="@+id/createAccountButton"
+                android:id="@+id/createAccount_btn"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
