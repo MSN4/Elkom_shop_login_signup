@@ -43,7 +43,7 @@
                     tools:ignore="MissingConstraints,NestedWeights" />
 
                 <TextView
-                    android:id="@+id/adminLoginTxt"
+                    android:id="@+id/adminLogin_Txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
@@ -138,7 +138,7 @@
                 tools:ignore="RtlHardcoded">
 
                 <TextView
-                    android:id="@+id/forgotPassTxt"
+                    android:id="@+id/forgotPass_Txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/forgot_password"
@@ -159,7 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <Button
-                android:id="@+id/loginBtn"
+                android:id="@+id/login_Btn"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
@@ -187,7 +187,7 @@
                 android:layout_marginEnd="5dp"/>
 
             <TextView
-                android:id="@+id/createAccTxt"
+                android:id="@+id/createAcc_Txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/create_account"

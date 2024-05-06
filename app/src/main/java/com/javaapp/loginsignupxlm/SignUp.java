@@ -29,11 +29,12 @@ import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity {
     private FirebaseAuth auth;
-    private EditText usernameEditText;
-    private EditText emailEditText;
-    private EditText phoneEditText;
-    private EditText passwordEditText;
-    private EditText confirmPassword;
+    private EditText usernameEditText,
+            emailEditText,
+            phoneEditText,
+            passwordEditText,
+            confirmPassword;
+
     ImageView imageView;
     FloatingActionButton button;
     @Override
