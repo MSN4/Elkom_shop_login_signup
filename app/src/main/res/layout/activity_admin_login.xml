@@ -65,7 +65,7 @@
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/ic_user_filled"
                 android:drawablePadding="8dp"
-                android:hint="@string/enter_email"
+                android:hint="@string/username"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
@@ -78,7 +78,7 @@
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/ic_lock"
                 android:drawablePadding="8dp"
-                android:hint="@string/enter_password"
+                android:hint="@string/HintPassword"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"

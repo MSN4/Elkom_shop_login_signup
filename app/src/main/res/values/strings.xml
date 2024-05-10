@@ -47,7 +47,7 @@
     <string name="HintUserName">UserName*</string>
     <string name="HintEmail">Email Address*</string>
     <string name="HintPhone">Phone Number*</string>
-    <string name="HintPassword">Enter Password*</string>
+    <string name="HintPassword">Password*</string>
     <string name="HintConfirm">Confirm Password*</string>
     <string name="not_yet_registered_signup_now">Not yet registered? SignUp Now</string>
 </resources>
