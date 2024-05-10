@@ -12,17 +12,22 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="30dp">
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/pfp_imageView"
             android:layout_width="199dp"
             android:layout_height="200dp"
-            android:layout_marginStart="92dp"            android:background="#EAB9F3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="92dp"
+            android:background="#EAB9F3"
             android:padding="5dp"
             app:shapeAppearanceOverlay="@style/circular"
             app:srcCompat="@drawable/person_vic"
             app:strokeColor="@color/white"
-            app:strokeWidth="5dp"/>
+            app:strokeWidth="5dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingAction_btn"
@@ -61,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/registerpage"
                 android:textAlignment="center"
-                android:textColor="#EAB9F3"
+                android:textColor="@color/dpurble"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -71,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/required_info"
-                android:textColor="#AAA4A4"
+                android:textColor="#E15757"
                 android:textSize="20sp" />
 
             <EditText
@@ -84,6 +89,7 @@
                 android:drawablePadding="8dp"
                 android:hint="@string/username"
                 android:padding="8dp"
+                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="#AAA4A4" />
 
@@ -97,6 +103,7 @@
                 android:drawablePadding="8dp"
                 android:hint="@string/email_address"
                 android:padding="8dp"
+                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="#AAA4A4" />
 
@@ -110,6 +117,7 @@
                 android:drawablePadding="8dp"
                 android:hint="@string/phone_number"
                 android:padding="8dp"
+                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="#AAA4A4" />
 
@@ -124,6 +132,7 @@
                 android:hint="@string/enter_password"
                 android:inputType="textPassword"
                 android:padding="8dp"
+                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="#AAA4A4" />
 
@@ -138,6 +147,7 @@
                 android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:padding="8dp"
+                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="#AAA4A4" />
 
@@ -147,9 +157,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/lightPink"
+                android:backgroundTint="@color/dpurble"
                 android:text="@string/sign_up"
-                android:textColor="#6C4193"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:cornerRadius="20dp" />
