@@ -80,7 +80,9 @@ public class UserLogin extends AppCompatActivity {
                                public void onSuccess(AuthResult authResult) {
                                    Toast.makeText(UserLogin.this,"Login Successful!",
                                            Toast.LENGTH_LONG).show();
-                                   startActivity(new Intent(UserLogin.this,MainActivity.class));
+
+
+                                   startActivity(new Intent(UserLogin.this,HomePage.class));
                                    finish();
                                }
                            }).addOnFailureListener(new OnFailureListener() {
@@ -153,13 +155,21 @@ public class UserLogin extends AppCompatActivity {
 
     //check if user is already logged in, if logged in open home page
     //if not, then open login
+    AdminLogin adminLogin = new AdminLogin();
+    boolean admin = adminLogin.isAdmin;
     @Override
     protected void onStart() {
         super.onStart();
-        if (auth.getCurrentUser() != null){
-            Toast.makeText(UserLogin.this, "Already Logged In!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(UserLogin.this, HomePage.class));
-            finish(); //close login activity
+        if (auth.getCurrentUser() != null) {
+
+            if (admin) {
+                Toast.makeText(UserLogin.this, "Admin is already Logged In!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UserLogin.this, AdminHome.class));
+            } else {
+                Toast.makeText(UserLogin.this, "Already Logged In!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(UserLogin.this, HomePage.class));
+            }
+            finish(); // close login activity
         }
     }
 

@@ -58,7 +58,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/edit_TextEmail"
+                android:id="@+id/edit_adminEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
@@ -67,11 +67,12 @@
                 android:drawablePadding="8dp"
                 android:hint="@string/username"
                 android:padding="8dp"
+                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/edit_adminPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
@@ -81,11 +82,12 @@
                 android:hint="@string/HintPassword"
                 android:inputType="textPassword"
                 android:padding="8dp"
+                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/adminloginButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
