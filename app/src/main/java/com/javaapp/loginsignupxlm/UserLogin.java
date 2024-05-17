@@ -1,7 +1,9 @@
 package com.javaapp.loginsignupxlm;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -11,10 +13,14 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,21 +44,21 @@ public class UserLogin extends AppCompatActivity {
     forgotPasswordTxt=findViewById(R.id.forgotPass_Txt);
     loginBtn=findViewById(R.id.login_Btn);
 
-    //open the signup fragment
+    //open the signup HomePage
     createAccountTxt.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             startActivity(new Intent(UserLogin.this,SignUp.class));
         }
     });
-    //show forgot password fragment
+    //show forgot password HomePage
     forgotPasswordTxt.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             startActivity(new Intent(UserLogin.this,ForgotPassword.class));
         }
     });
-    //show admin login fragment
+    //show admin login HomePage
     adminLoginTxt.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -97,8 +103,66 @@ public class UserLogin extends AppCompatActivity {
        }
    });
 
+   //forgot password
+        forgotPasswordTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(UserLogin.this);
+                View forgotDialog =getLayoutInflater().inflate(R.layout.dialog_forgot,null);
+                EditText emailBox=forgotDialog.findViewById(R.id.emailBox);
+
+                builder.setView(forgotDialog);
+                AlertDialog dialog= builder.create();
 
 
+                forgotDialog.findViewById(R.id.btnReset).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String userEmail = emailBox.getText().toString();
+                        if (TextUtils.isEmpty(userEmail) && !Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
+                            Toast.makeText(UserLogin.this, "Enter your registered email id", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        auth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(UserLogin.this, "Check your email", Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
+                                } else {
+                                    Toast.makeText(UserLogin.this, "Unable to send, failed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
+                forgotDialog.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                if (dialog.getWindow() != null){
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+                }
+                dialog.show();
+
+            }
+        });
 
     }
+
+    //check if user is already logged in, if logged in open home page
+    //if not, then open login
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (auth.getCurrentUser() != null){
+            Toast.makeText(UserLogin.this, "Already Logged In!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(UserLogin.this, HomePage.class));
+            finish(); //close login activity
+        }
+    }
+
+
 }

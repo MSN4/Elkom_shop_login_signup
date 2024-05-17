@@ -50,4 +50,5 @@
     <string name="HintPassword">Password*</string>
     <string name="HintConfirm">Confirm Password*</string>
     <string name="not_yet_registered_signup_now">Not yet registered? SignUp Now</string>
+    <string name="forgot_password_txt">Forgot Password</string>
 </resources>
