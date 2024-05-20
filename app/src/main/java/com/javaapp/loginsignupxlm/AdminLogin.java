@@ -54,9 +54,10 @@ public class AdminLogin extends AppCompatActivity {
 
                             admin.signInWithEmailAndPassword(email, password)
                                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                        //to get the admin UID you can use : authResult.getUser().getUid()
                                         @Override
                                         public void onSuccess(AuthResult authResult) {
-                                            Toast.makeText(AdminLogin.this, "Login Successful! " + authResult.getUser().getUid(),
+                                            Toast.makeText(AdminLogin.this, "Login Successful! ",
                                                     Toast.LENGTH_LONG).show();
                                             checkUserAccessLevel(authResult.getUser().getUid());
                                         }
