@@ -159,6 +159,8 @@ public class UserLogin extends AppCompatActivity {
 
     //check if user is already logged in, if logged in open home page
     //if not, then open login
+    //this onStart method checks if the user is already logged in whether it is an admin or
+    // a typical user , and it opens the suitable homepage based on the role level
 
     @Override
     protected void onStart() {
