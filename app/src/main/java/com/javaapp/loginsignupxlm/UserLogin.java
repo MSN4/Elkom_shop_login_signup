@@ -23,6 +23,10 @@ import com.google.android.gms.tasks.Task;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserLogin extends AppCompatActivity {
     private FirebaseAuth auth;
@@ -160,13 +164,38 @@ public class UserLogin extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if (auth.getCurrentUser() != null) {
-                Toast.makeText(UserLogin.this, "Already Logged In!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(UserLogin.this, HomePage.class));
-            finish(); // close login activity
-
-
+            FirebaseUser currentUser = auth.getCurrentUser();
+            if (currentUser != null) {
+                String userId = currentUser.getUid();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                DocumentReference userRef = db.collection("users").document(userId);
+                userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Boolean isAdmin = document.getBoolean("isAdmin");
+                                if (isAdmin != null && isAdmin) {
+                                    Toast.makeText(UserLogin.this, "Admin is already Logged In!", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(UserLogin.this, AdminHome.class));
+                                } else {
+                                    Toast.makeText(UserLogin.this, "Already Logged In!", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(UserLogin.this, HomePage.class));
+                                }
+                            } else {
+                                Toast.makeText(UserLogin.this, "User document does not exist!", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(UserLogin.this, "Failed to fetch user data!", Toast.LENGTH_SHORT).show();
+                        }
+                        finish(); // close login activity
+                    }
+                });
+            }
         }
     }
+
 
 
 }
